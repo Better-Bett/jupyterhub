@@ -59,3 +59,18 @@ c.NativeAuthenticator.open_signup = True
 admin = os.environ.get("JUPYTERHUB_ADMIN")
 if admin:
     c.Authenticator.admin_users = [admin]
+
+# Timeout de inactividad (30 minutos)
+c.JupyterHub.services = [
+    {
+        'name': 'idle-culler',
+        'command': [
+            'python3', '-m', 'jupyterhub_idle_culler',
+            '--timeout=1800'
+        ],
+    }
+]
+
+# Más tiempo para que el contenedor arranque y responda
+c.DockerSpawner.start_timeout = 3000   # tiempo para arrancar el contenedor
+c.Spawner.http_timeout = 1200         # tiempo esperando respuesta HTTP del servidor
