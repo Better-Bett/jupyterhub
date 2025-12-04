@@ -40,7 +40,7 @@ c.DockerSpawner.debug = True
 
 # User containers will access hub by container name on the Docker network
 c.JupyterHub.hub_ip = "jupyterhub"
-# c.JupyterHub.hub_port = 8001
+# c.JupyterHub.hub_port = 8000
 
 # Persist hub data on volume mounted inside container
 c.JupyterHub.cookie_secret_file = "/data/jupyterhub_cookie_secret"
@@ -72,5 +72,5 @@ c.JupyterHub.services = [
 ]
 
 # Más tiempo para que el contenedor arranque y responda
-c.DockerSpawner.start_timeout = 3000   # tiempo para arrancar el contenedor
-c.Spawner.http_timeout = 1200         # tiempo esperando respuesta HTTP del servidor
+c.DockerSpawner.start_timeout = 60   # tiempo para arrancar el contenedor
+c.Spawner.http_timeout = 30         # tiempo esperando respuesta HTTP del servidor
